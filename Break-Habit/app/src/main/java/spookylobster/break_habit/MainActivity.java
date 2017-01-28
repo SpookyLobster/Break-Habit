@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            SettingActivity();
         }
 
         return super.onOptionsItemSelected(item);
@@ -54,6 +54,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void startShakeActivity(){
         Intent intent = new Intent(this, ShakeActivity.class);
+        startActivity(intent);
+    }
+    public void SettingActivity(){
+        Intent intent = new Intent(this, SettingActivity.class);
         startActivity(intent);
     }
 }
