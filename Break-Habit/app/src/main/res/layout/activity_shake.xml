@@ -29,5 +29,6 @@
         android:id="@+id/shake_counter"
         android:layout_weight="0.3"
         android:gravity="center"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:background="@mipmap/shake_background"/>
 </LinearLayout>
