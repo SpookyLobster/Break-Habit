@@ -166,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void StepActivity(){
         Intent step_intent = new Intent(this,StepActivity.class );
-        startActivity(step_intent);
+        startActivityForResult(step_intent, 0);
     }
 
     public void SitupActivity(){

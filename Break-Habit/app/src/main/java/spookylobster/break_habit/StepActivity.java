@@ -49,7 +49,7 @@ public class StepActivity extends AppCompatActivity implements SensorEventListen
                steps -= 1;
                updatecountertext();
            }else{
-               stopShakeActivity();
+               stopStepsActivity();
            }
 
         }
@@ -61,7 +61,7 @@ public class StepActivity extends AppCompatActivity implements SensorEventListen
 
     }
 
-    public void stopShakeActivity(){
+    public void stopStepsActivity(){
         Intent returnIntent = new Intent();
         setResult(Activity.RESULT_OK, returnIntent);
         finish();
