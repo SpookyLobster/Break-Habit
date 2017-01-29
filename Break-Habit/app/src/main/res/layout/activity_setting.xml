@@ -72,13 +72,22 @@
         android:layout_alignBottom="@+id/SetPhoneShake"
         android:layout_toEndOf="@+id/SetPhoneShake" />
 
+    <TextView
+        android:text="Time Interval for alarms"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/SetTime"
+        android:layout_alignBaseline="@+id/timeinterval"
+        android:layout_alignBottom="@+id/timeinterval"
+        android:layout_alignParentStart="true" />
+
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="time"
         android:ems="10"
         android:id="@+id/timeinterval"
-        android:layout_below="@+id/numberShake"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/SetPhoneShake"
+        android:layout_toEndOf="@+id/SetTime" />
 
 </RelativeLayout>
