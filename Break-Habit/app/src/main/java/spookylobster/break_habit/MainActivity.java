@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button startbutton;
     private TextView timeView;
-    private String[] action = {"Shake", "Running", "Situp", "Pushup"};
+    private String[] action = {"Shake", "Running", "Pushup"};
     private ListView actionList;
     private Ringtone r;
     private SQLhandler handler = new SQLhandler(this,null,1);
@@ -59,12 +59,12 @@ public class MainActivity extends AppCompatActivity {
                 if (i==1) {
                     StepActivity();
                 }
-                /*
+/*
                 if (i==2){
                     SitupActivity();
                 }
-                */
-                if (i==3){
+*/
+                if (i==2){
                     PushupActivity();
                 }
             }
@@ -175,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(step_intent, 0);
     }
 
-    /* sit up not working
+/*
     public void SitupActivity(){
         Intent situp_intent = new Intent(this, SitupActivity.class);
         startActivity(situp_intent);

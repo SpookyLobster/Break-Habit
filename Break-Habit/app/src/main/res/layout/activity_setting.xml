@@ -16,54 +16,52 @@
         android:layout_height="wrap_content"
         android:id="@+id/StopMethod"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:text="Time Interval for alarms"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/SetTime"
+        android:layout_alignParentStart="true"
+        android:textStyle="normal|bold"
+        android:layout_toStartOf="@+id/timeinterval"
+        android:layout_alignBottom="@+id/timeinterval"
+        android:textSize="16sp"/>
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/numberPush"
-        android:layout_alignBaseline="@+id/SetPushUp"
-        android:layout_alignBottom="@+id/SetPushUp"
-        android:layout_toEndOf="@+id/SetPushUp" />
+        android:id="@+id/numberSteps"
+        android:layout_below="@+id/timeinterval"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="13dp" />
+
+    <TextView
+        android:text="# of steps for alarms"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/SetStep"
+        android:textStyle="normal|bold"
+        android:layout_alignBaseline="@+id/numberSteps"
+        android:layout_alignBottom="@+id/numberSteps"
+        android:layout_toStartOf="@+id/numberSteps"
+        android:textSize="16sp"/>
 
     <TextView
         android:text="# of phone shakes: "
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/SetPhoneShake"
+        android:textStyle="normal|bold"
         android:layout_below="@+id/numberPush"
         android:layout_alignParentStart="true"
-        android:textStyle="normal|bold" />
-
-    <Button
-        android:text="Save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/backbutton"
-        android:layout_toEndOf="@+id/StopMethod"
-        android:id="@+id/savebutton" />
-
-    <Button
-        android:text="Back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="17dp"
-        android:id="@+id/backbutton"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:text="# of push ups:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/SetPushUp"
-        android:layout_marginTop="11dp"
-        android:layout_below="@+id/StopMethod"
-        android:layout_alignParentStart="true"
-        android:textStyle="normal|bold"
-        android:fontFamily="sans-serif" />
+        android:layout_marginTop="32dp"
+        android:layout_toStartOf="@+id/numberShake"
+        android:textSize="16sp"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -73,17 +71,30 @@
         android:id="@+id/numberShake"
         android:layout_alignBaseline="@+id/SetPhoneShake"
         android:layout_alignBottom="@+id/SetPhoneShake"
-        android:layout_toEndOf="@+id/SetPhoneShake" />
+        android:layout_alignParentEnd="true" />
 
     <TextView
-        android:text="Time Interval for alarms"
+        android:text="# of push ups:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/SetTime"
-        android:layout_alignBaseline="@+id/timeinterval"
-        android:layout_alignBottom="@+id/timeinterval"
+        android:id="@+id/SetPushUp"
+        android:layout_marginTop="29dp"
+        android:textStyle="normal|bold"
+        android:fontFamily="sans-serif"
+        android:layout_below="@+id/StopMethod"
         android:layout_alignParentStart="true"
-        android:textStyle="normal|bold" />
+        android:layout_toStartOf="@+id/numberPush"
+        android:textSize="16sp"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/numberPush"
+        android:layout_alignBaseline="@+id/SetPushUp"
+        android:layout_alignBottom="@+id/SetPushUp"
+        android:layout_alignParentEnd="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -91,27 +102,28 @@
         android:inputType="time"
         android:ems="10"
         android:id="@+id/timeinterval"
-        android:layout_below="@+id/SetPhoneShake"
-        android:layout_toEndOf="@+id/SetTime"
-        android:hint="         (in Min)" />
+        android:hint="         (in Min)"
+        android:layout_marginTop="18dp"
+        android:layout_below="@+id/numberShake"
+        android:layout_alignParentEnd="true" />
 
-    <TextView
-        android:text="# of steps for alarms"
+    <Button
+        android:text="Back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/SetStep"
-        android:layout_below="@+id/timeinterval"
-        android:layout_alignParentStart="true"
-        android:textStyle="normal|bold" />
+        android:layout_marginBottom="17dp"
+        android:id="@+id/backbutton"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@+id/savebutton"
+        android:layout_marginEnd="70dp" />
 
-    <EditText
+    <Button
+        android:text="Save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="numberDecimal"
-        android:ems="10"
-        android:id="@+id/numberSteps"
-        android:layout_alignBaseline="@+id/SetStep"
-        android:layout_alignBottom="@+id/SetStep"
-        android:layout_alignStart="@+id/backbutton" />
+        android:id="@+id/savebutton"
+        android:layout_alignBaseline="@+id/backbutton"
+        android:layout_alignBottom="@+id/backbutton"
+        android:layout_alignEnd="@+id/StopMethod" />
 
 </RelativeLayout>
