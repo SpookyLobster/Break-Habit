@@ -58,6 +58,7 @@ public class SQLhandler extends SQLiteOpenHelper{
     public Cursor getData(String method) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res = db.rawQuery("select * from setting where method=" + method + "", null);
+        res.moveToFirst();
         return res;
     }
 }
