@@ -1,6 +1,8 @@
 package spookylobster.break_habit;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -41,15 +43,15 @@ public class StepActivity extends AppCompatActivity implements SensorEventListen
     public void onSensorChanged(SensorEvent event) {
 
         Sensor sensor = event.sensor;
-        float[] values = event.values;
-        int value = -1;
-
-        if (values.length > 0) {
-            value = (int) values[0];
-        }
 
         if (sensor.getType() == Sensor.TYPE_STEP_COUNTER) {
-            stepcounterTV.setText("Step Counter Detected : " + value);
+           if(steps>0){
+               steps -= 1;
+               updatecountertext();
+           }else{
+               stopShakeActivity();
+           }
+
         }
     }
 
@@ -59,7 +61,13 @@ public class StepActivity extends AppCompatActivity implements SensorEventListen
 
     }
 
-    //public void updatecountertext(){
-      //  stepcounterTV.setText(steps.toString());
-    //}
+    public void stopShakeActivity(){
+        Intent returnIntent = new Intent();
+        setResult(Activity.RESULT_OK, returnIntent);
+        finish();
+    }
+
+    public void updatecountertext(){
+        stepcounterTV.setText(steps.toString());
+    }
 }
