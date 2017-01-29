@@ -30,7 +30,7 @@ public class StepActivity extends AppCompatActivity implements SensorEventListen
     protected void onResume() {
         super.onResume();
         exercising = true;
-        Sensor countSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
+        Sensor countSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
         if (countSensor != null){
             sensorManager.registerListener(this, countSensor, SensorManager.SENSOR_DELAY_UI);
         } else {

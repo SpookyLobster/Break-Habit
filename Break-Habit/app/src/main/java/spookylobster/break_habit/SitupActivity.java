@@ -39,28 +39,21 @@ public class SitupActivity extends AppCompatActivity implements SensorEventListe
         // Setup the sensors
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-
-        if (accelerometer == null) {
-            Toast.makeText(this, "accelerometer is null", Toast.LENGTH_SHORT).show();
-        }
         magnetometer = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
 
-        if (magnetometer == null) {
-            Toast.makeText(this, "magnetometer is null", Toast.LENGTH_SHORT).show();
-        }
 
         // Detect the window position
         switch (getWindowManager().getDefaultDisplay().getRotation()) {
             case Surface.ROTATION_0:
-                Toast.makeText(this, "Rotation 0", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Rotation 0", Toast.LENGTH_LONG).show();
             case Surface.ROTATION_90:
-                Toast.makeText(this, "Rotation 90", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Rotation 90", Toast.LENGTH_LONG).show();
             case Surface.ROTATION_180:
-                Toast.makeText(this, "Rotation 180", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Rotation 180", Toast.LENGTH_LONG).show();
             case Surface.ROTATION_270:
-                Toast.makeText(this, "Rotation 270", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Rotation 270", Toast.LENGTH_LONG).show();
             default:
-                Toast.makeText(this, "Rotation unknown", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Rotation unknown", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -102,7 +95,7 @@ public class SitupActivity extends AppCompatActivity implements SensorEventListe
     public void onSensorChanged(SensorEvent event) {
         //Log.d(TAG, "onSensorChanged()");
         if (event.values == null) {
-            Toast.makeText(this, "event.values is null", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "event.values is null", Toast.LENGTH_LONG).show();
             return;
         }
         int sensorType = event.sensor.getType();
@@ -114,20 +107,20 @@ public class SitupActivity extends AppCompatActivity implements SensorEventListe
                 mGeomagnetic = event.values;
                 break;
             default:
-                Toast.makeText(this, "Unknown sensor type", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Unknown sensor type", Toast.LENGTH_LONG).show();
                 return;
         }
         if (mGravity == null) {
-            Toast.makeText(this, "mGravity is null", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "mGravity is null", Toast.LENGTH_LONG).show();
             return;
         }
         if (mGeomagnetic == null) {
-            Toast.makeText(this, "mGeomagnetic is null", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "mGeomagnetic is null", Toast.LENGTH_LONG).show();
             return;
         }
         float R[] = new float[9];
         if (! SensorManager.getRotationMatrix(R, null, mGravity, mGeomagnetic)) {
-            Toast.makeText(this, "getRotationMatrix() failed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "getRotationMatrix() failed", Toast.LENGTH_LONG).show();
             return;
         }
 

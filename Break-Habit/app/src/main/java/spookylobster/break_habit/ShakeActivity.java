@@ -26,8 +26,10 @@ public class ShakeActivity extends AppCompatActivity implements SensorEventListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shake);
+
         SensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         Accelerometer = SensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+
         SensorManager.registerListener(this, Accelerometer , SensorManager.SENSOR_DELAY_NORMAL);
 
         counter = (TextView) findViewById(R.id.shake_counter);
