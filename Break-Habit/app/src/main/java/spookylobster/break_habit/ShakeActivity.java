@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.hardware.Sensor;
 import android.widget.TextView;
 
+// Source: https://code.tutsplus.com/tutorials/using-the-accelerometer-on-android--mobile-22125
+
 public class ShakeActivity extends AppCompatActivity implements SensorEventListener {
     private SensorManager SensorManager;
     private Sensor Accelerometer;
@@ -58,10 +60,10 @@ public class ShakeActivity extends AppCompatActivity implements SensorEventListe
     }
 
     public void shake() {
+        shakeCounter -= 1;
         if (shakeCounter == 0){
             stopShakeActivity();
         }
-        shakeCounter -= 1;
         updateCounterText();
     }
 
