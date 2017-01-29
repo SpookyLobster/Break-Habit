@@ -16,37 +16,50 @@ public class StepActivity extends AppCompatActivity implements SensorEventListen
     private SensorManager sensorManager;
     private TextView stepcounterTV;
     private boolean exercising;
+    private Integer steps = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_step);
-
+        exercising = true;
         stepcounterTV = (TextView)findViewById(R.id.stepcount);
         sensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
-    }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        exercising = true;
         Sensor countSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
         if (countSensor != null){
             sensorManager.registerListener(this, countSensor, SensorManager.SENSOR_DELAY_UI);
         } else {
-            Toast.makeText(this, "Sensor not found!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Sensor not found!", Toast.LENGTH_SHORT).show();
         }
+
+        //updatecountertext();
+
     }
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        if(exercising){
-            stepcounterTV.setText(String.valueOf(event.values[0]));
+
+        Sensor sensor = event.sensor;
+        float[] values = event.values;
+        int value = -1;
+
+        if (values.length > 0) {
+            value = (int) values[0];
         }
-    }
+
+        if (sensor.getType() == Sensor.TYPE_STEP_COUNTER) {
+            stepcounterTV.setText("Step Counter Detected : " + value);
+        }
+        }
+
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
     }
+
+    //public void updatecountertext(){
+      //  stepcounterTV.setText(steps.toString());
+    //}
 }
