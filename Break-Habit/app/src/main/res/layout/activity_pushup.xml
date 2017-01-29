@@ -29,6 +29,7 @@
     android:id="@+id/pushup_counter"
     android:layout_weight="0.3"
     android:gravity="center"
-    android:textAlignment="center" />
+    android:textAlignment="center"
+    android:background="@mipmap/pushup_background"/>
 
 </LinearLayout>
