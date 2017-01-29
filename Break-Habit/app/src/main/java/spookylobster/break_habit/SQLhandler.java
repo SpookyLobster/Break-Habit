@@ -22,15 +22,16 @@ public class SQLhandler extends SQLiteOpenHelper{
     public SQLhandler(Context context, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DATABASE_NAME, null, 1);
 
+
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table setting"+
-                "(method varchar(100) primary key, number int)");
+        db.execSQL("create table setting "+
+                "(method varchar(100) primary key, number integer)");
         //set default value for settings
-        db.execSQL("insert into setting values('SetShake',25)");
-        db.execSQL("insert into setting values('SetPushup',10)");
+        db.execSQL("insert into setting (method, number) values('SetShake',25)");
+        db.execSQL("insert into setting (method, number) values('SetPushup',10)");
         //db.execSQL("insert into setting values('SetTime',00:05)");
     }
 
@@ -55,10 +56,11 @@ public class SQLhandler extends SQLiteOpenHelper{
     }
 
     //Getting the userinput number
-    public Cursor getData(String method) {
+    public int getData(String method) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res = db.rawQuery("select * from setting where method=" + method + "", null);
+        //Cursor res = db.rawQuery("select * from setting where method=\'" + method + "\'", null);
+        Cursor res = db.rawQuery("select * from setting", null);
         res.moveToFirst();
-        return res;
+        return res.getInt(res.getColumnIndex("number"));
     }
 }
