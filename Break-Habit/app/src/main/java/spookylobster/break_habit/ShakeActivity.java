@@ -1,6 +1,7 @@
 package spookylobster.break_habit;
 
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
@@ -8,16 +9,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import android.hardware.Sensor;
-import android.hardware.SensorEventListener;
-import android.view.View;
 import android.widget.TextView;
+
+// Source: https://code.tutsplus.com/tutorials/using-the-accelerometer-on-android--mobile-22125
 
 public class ShakeActivity extends AppCompatActivity implements SensorEventListener {
     private SensorManager SensorManager;
     private Sensor Accelerometer;
     private float previousZ = 0;
-    private Integer shakeCounter = 10;
+    private Integer shakeCounter = 50;
     private TextView counter;
+    private long lastUpdate = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,21 +30,26 @@ public class ShakeActivity extends AppCompatActivity implements SensorEventListe
         SensorManager.registerListener(this, Accelerometer , SensorManager.SENSOR_DELAY_NORMAL);
 
         counter = (TextView) findViewById(R.id.shake_counter);
-        counter.setText(shakeCounter.toString());
-
-
+        updateCounterText();
     }
 
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
         Sensor mySensor = sensorEvent.sensor;
 
+        long curTime = System.currentTimeMillis();
         if (mySensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-            float z = sensorEvent.values[2];
+            float z = sensorEvent.values[1];
+            System.out.print("Shake is " + z);
+            if ((curTime - lastUpdate) > 100) {
 
-            if (z != previousZ) {
+                float speed = Math.abs(z - previousZ)/ (curTime - lastUpdate) * 10000;
+                lastUpdate = curTime;
+
+                if ( 500 < speed) {
+                    shake();
+                }
                 previousZ = z;
-
             }
         }
     }
@@ -52,5 +59,20 @@ public class ShakeActivity extends AppCompatActivity implements SensorEventListe
 
     }
 
+    public void shake() {
+        shakeCounter -= 1;
+        if (shakeCounter == 0){
+            stopShakeActivity();
+        }
+        updateCounterText();
+    }
 
+    public void updateCounterText() {
+        counter.setText(shakeCounter.toString());
+    }
+
+    public void stopShakeActivity(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 }

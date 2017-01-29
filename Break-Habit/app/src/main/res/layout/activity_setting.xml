@@ -37,4 +37,39 @@
         android:layout_below="@+id/StopMethod"
         android:layout_alignParentStart="true" />
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/numberShake"
+        android:layout_alignBaseline="@+id/SetPhoneShake"
+        android:layout_alignBottom="@+id/SetPhoneShake"
+        android:layout_toEndOf="@+id/SetPhoneShake" />
+
+    <TextView
+        android:text="# of phone shakes: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/SetPhoneShake"
+        android:layout_below="@+id/numberPush"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/backbutton"
+        android:layout_toEndOf="@+id/StopMethod"
+        android:id="@+id/savebutton" />
+
+    <Button
+        android:text="Back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="17dp"
+        android:id="@+id/backbutton"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
