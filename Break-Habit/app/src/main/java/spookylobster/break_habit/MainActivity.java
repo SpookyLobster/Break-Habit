@@ -26,8 +26,11 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-@TargetApi(Build.VERSION_CODES.GINGERBREAD)
-@SuppressLint("NewApi")
+//Indicates that Lint should treat this type as targeting a given API level,
+//no matter what the project target is(It just suppress the Lint error)
+//suppressing all warnings that would tell you if you're using any API introduced after your minSdkVersion
+//@TargetApi(Build.VERSION_CODES.GINGERBREAD)
+//@SuppressLint("NewApi")
 
 public class MainActivity extends AppCompatActivity {
 
@@ -99,16 +102,17 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
-    @SuppressLint("NewApi")
+    //@TargetApi(Build.VERSION_CODES.GINGERBREAD)
+    //@SuppressLint("NewApi")
     public class CounterClass extends CountDownTimer{
 
         public CounterClass(long millisInFuture, long countDownInterval){
             super(millisInFuture, countDownInterval);
         }
 
-        @TargetApi(Build.VERSION_CODES.GINGERBREAD)
-        @SuppressLint("NewApi")
+        //https://www.youtube.com/watch?v=ZqqP69rJVmg
+        //@TargetApi(Build.VERSION_CODES.GINGERBREAD)
+        //@SuppressLint("NewApi")
         @Override
         public void onTick(long millisUntilFinished) {
             long millis = millisUntilFinished;
