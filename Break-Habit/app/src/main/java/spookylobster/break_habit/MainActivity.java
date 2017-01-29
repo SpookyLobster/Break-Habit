@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button startbutton;
     private TextView timeView;
-    private String[] action = {"Shake", "Running"};
+    private String[] action = {"Shake", "Running", "Situp"};
     private ListView actionList;
     private Ringtone r;
 
@@ -54,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
                 }
                 if (i==1) {
                     StepActivity();
+                }
+                if (i==2){
+                    SitupActivity();
                 }
             }
         });
@@ -153,6 +156,11 @@ public class MainActivity extends AppCompatActivity {
     public void StepActivity(){
         Intent step_intent = new Intent(this,StepActivity.class );
         startActivity(step_intent);
+    }
+
+    public void SitupActivity(){
+        Intent situp_intent = new Intent(this, SitupActivity.class);
+        startActivity(situp_intent);
     }
 
     @Override
