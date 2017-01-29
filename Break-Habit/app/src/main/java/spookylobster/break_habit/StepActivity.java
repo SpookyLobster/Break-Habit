@@ -21,7 +21,7 @@ public class StepActivity extends AppCompatActivity implements SensorEventListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_step);
-        exercising = false;
+
         stepcounterTV = (TextView)findViewById(R.id.stepcount);
         sensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
     }
@@ -34,7 +34,7 @@ public class StepActivity extends AppCompatActivity implements SensorEventListen
         if (countSensor != null){
             sensorManager.registerListener(this, countSensor, SensorManager.SENSOR_DELAY_UI);
         } else {
-            Toast.makeText(this, "Sensor not found!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Sensor not found!", Toast.LENGTH_LONG).show();
         }
     }
 
