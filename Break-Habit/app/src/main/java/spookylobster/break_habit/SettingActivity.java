@@ -41,11 +41,7 @@ public class SettingActivity extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                int Shake = Integer.parseInt(numberShake.getText().toString());
-                int Push = Integer.parseInt(numberPush.getText().toString());
-                //user input time in min to milliseconds
-                int Timer = Integer.parseInt(Time.getText().toString()) * 60 * 1000;
-                int Step = Integer.parseInt(numberStep.getText().toString());
+
                 if (numberShake.getText().toString().isEmpty() && numberPush.getText().toString().isEmpty() && Time.getText().toString().isEmpty() && numberStep.getText().toString().isEmpty()) {
 
                     Context context = getApplicationContext();
@@ -56,6 +52,11 @@ public class SettingActivity extends AppCompatActivity {
 
 
                 } else {
+                    int Shake = Integer.parseInt(numberShake.getText().toString());
+                    int Push = Integer.parseInt(numberPush.getText().toString());
+                    //user input time in min to milliseconds
+                    int Timer = Integer.parseInt(Time.getText().toString()) * 60 * 1000;
+                    int Step = Integer.parseInt(numberStep.getText().toString());
                     handler.updateSetting(Shake, "SetShake");
                     handler.updateSetting(Push, "SetPushup");
                     handler.updateSetting(Timer, "SetTime");
