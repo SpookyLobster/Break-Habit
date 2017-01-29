@@ -42,9 +42,9 @@ public class SettingActivity extends AppCompatActivity {
                 int Shake = Integer.parseInt(numberShake.getText().toString());
                 handler.updateSetting(Shake,"SetShake");
                 int Push = Integer.parseInt(numberPush.getText().toString());
-                handler.updateSetting(Push,"SetPush");
+                handler.updateSetting(Push,"SetPushup");
                 Context context = getApplicationContext();
-                CharSequence text = "Setting Saved " + handler.getData("SetShake") + " " + handler.getData("SetPush");
+                CharSequence text = "Setting Saved " + handler.getData("SetPushup");
                 int duration = Toast.LENGTH_SHORT;
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();

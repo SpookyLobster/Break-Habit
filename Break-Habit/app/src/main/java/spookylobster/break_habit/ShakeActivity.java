@@ -18,6 +18,7 @@ public class ShakeActivity extends AppCompatActivity implements SensorEventListe
     private SensorManager SensorManager;
     private Sensor Accelerometer;
     private float previousZ = 0;
+    SQLhandler handler = new SQLhandler(this,null,1);
     private Integer shakeCounter = 10;
     private TextView counter;
     private long lastUpdate = 0;
@@ -26,7 +27,7 @@ public class ShakeActivity extends AppCompatActivity implements SensorEventListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shake);
-
+        shakeCounter = handler.getData("SetShake");
         SensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         Accelerometer = SensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 

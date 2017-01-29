@@ -27,13 +27,13 @@ public class SQLhandler extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        db.execSQL("drop table if exists setting");
         db.execSQL("create table setting "+
                 "(method varchar(100) primary key, number integer)");
         //set default value for settings
         db.execSQL("insert into setting (method, number) values(\"SetShake\",25)");
-        db.execSQL("insert into setting (method, number) values(\"SetPush\",10)");
+        db.execSQL("insert into setting (method, number) values(\"SetPushup\",10)");
         //db.execSQL("insert into setting values('SetTime',00:05)");
-
     }
 
     @Override
@@ -61,21 +61,25 @@ public class SQLhandler extends SQLiteOpenHelper{
     //Getting the userinput number
     public int getData(String method) {
         SQLiteDatabase db = this.getReadableDatabase();
-        System.out.print(method);
+        //System.out.print(method);
         Cursor res;
         //if (method.equals("SetPush")) {
-            res = db.rawQuery("select * from setting where method = \"SetPush\"", null);
+            //res = db.rawQuery("select * from setting where method = \'SetPush\'", null);
         //} else if (method.equals("SetShake")){
-   //         res = db.rawQuery("select * from setting where method = \"SetShake\"", null);
+        //res = db.rawQuery("select * from setting where method = \"SetShake\"", null);
         //} else {
  //           res = null;
        // }
-        //cursor res = db.rawQuery("select * from setting where method = \"" + method + "\"", null);
+        res = db.rawQuery("select * from setting where method = \"" + method + "\"", null);
 
         //Cursor res = db.rawQuery("select * from setting where method = \"SetPush\"", null);
-        //Cursor res = db.rawQuery("select * from setting", null);
+        //res = db.rawQuery("select * from setting", null);
         if(res != null) {
             res.moveToFirst();
+            //String i = res.getString(0) + res.getInt(1);
+            //res.moveToNext();
+            //String j = res.getString(0) + res.getInt(1);
+            //return (i + " | " + j);
             return res.getInt(1);
         }
         return -1;
