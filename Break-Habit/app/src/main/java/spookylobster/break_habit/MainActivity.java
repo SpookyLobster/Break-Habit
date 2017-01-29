@@ -35,6 +35,15 @@ public class MainActivity extends AppCompatActivity {
         timeView = (TextView)findViewById(R.id.timeTV);
 
         timeView.setText("00:03:00");
+        final CounterClass timer = new CounterClass(100000, 1000);
+        startbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                timer.start();
+            }
+        });
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
