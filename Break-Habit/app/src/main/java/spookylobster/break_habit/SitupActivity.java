@@ -53,19 +53,14 @@ public class SitupActivity extends AppCompatActivity implements SensorEventListe
         switch (getWindowManager().getDefaultDisplay().getRotation()) {
             case Surface.ROTATION_0:
                 Toast.makeText(this, "Rotation 0", Toast.LENGTH_SHORT).show();
-                break;
             case Surface.ROTATION_90:
                 Toast.makeText(this, "Rotation 90", Toast.LENGTH_SHORT).show();
-                break;
             case Surface.ROTATION_180:
                 Toast.makeText(this, "Rotation 180", Toast.LENGTH_SHORT).show();
-                break;
             case Surface.ROTATION_270:
                 Toast.makeText(this, "Rotation 270", Toast.LENGTH_SHORT).show();
-                break;
             default:
                 Toast.makeText(this, "Rotation unknown", Toast.LENGTH_SHORT).show();
-                break;
         }
     }
 
