@@ -44,7 +44,7 @@ public class SettingActivity extends AppCompatActivity {
                 int Push = Integer.parseInt(numberPush.getText().toString());
                 handler.updateSetting(Push,"SetPush");
                 Context context = getApplicationContext();
-                CharSequence text = "Setting Saved";
+                CharSequence text = "Setting Saved " + Shake + " " + Push;
                 int duration = Toast.LENGTH_SHORT;
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
