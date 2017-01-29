@@ -33,6 +33,7 @@ public class SQLhandler extends SQLiteOpenHelper{
         db.execSQL("insert into setting (method, number) values('SetShake',25)");
         db.execSQL("insert into setting (method, number) values('SetPushup',10)");
         //db.execSQL("insert into setting values('SetTime',00:05)");
+
     }
 
     @Override
@@ -58,9 +59,10 @@ public class SQLhandler extends SQLiteOpenHelper{
     //Getting the userinput number
     public int getData(String method) {
         SQLiteDatabase db = this.getReadableDatabase();
-        //Cursor res = db.rawQuery("select * from setting where method=\'" + method + "\'", null);
-        Cursor res = db.rawQuery("select * from setting", null);
+        Cursor res = db.rawQuery("select * from setting where method = \"" + method + "\"", null);
+
+        //Cursor res = db.rawQuery("select * from setting where method = \"SetShake\"", null);
         res.moveToFirst();
-        return res.getInt(res.getColumnIndex("number"));
+        return res.getInt(1);
     }
 }
