@@ -34,7 +34,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/SetPhoneShake"
         android:layout_below="@+id/numberPush"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textStyle="normal|bold" />
 
     <Button
         android:text="Save"
@@ -60,7 +61,9 @@
         android:id="@+id/SetPushUp"
         android:layout_marginTop="11dp"
         android:layout_below="@+id/StopMethod"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textStyle="normal|bold"
+        android:fontFamily="sans-serif" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -79,7 +82,8 @@
         android:id="@+id/SetTime"
         android:layout_alignBaseline="@+id/timeinterval"
         android:layout_alignBottom="@+id/timeinterval"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textStyle="normal|bold" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -88,6 +92,26 @@
         android:ems="10"
         android:id="@+id/timeinterval"
         android:layout_below="@+id/SetPhoneShake"
-        android:layout_toEndOf="@+id/SetTime" />
+        android:layout_toEndOf="@+id/SetTime"
+        android:hint="         (in Min)" />
+
+    <TextView
+        android:text="# of steps for alarms"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/SetStep"
+        android:layout_below="@+id/timeinterval"
+        android:layout_alignParentStart="true"
+        android:textStyle="normal|bold" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/numberSteps"
+        android:layout_alignBaseline="@+id/SetStep"
+        android:layout_alignBottom="@+id/SetStep"
+        android:layout_alignStart="@+id/backbutton" />
 
 </RelativeLayout>

@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.concurrent.TimeUnit;
+
 public class SettingActivity extends AppCompatActivity {
     private SQLhandler handler;
 
@@ -21,13 +23,14 @@ public class SettingActivity extends AppCompatActivity {
         handler = new SQLhandler(this,null,1);
         final Button back= (Button) findViewById(R.id.backbutton);
         final Button save= (Button) findViewById(R.id.savebutton);
-        final EditText numberShake, numberPush;
+        final EditText numberShake, numberPush,Time, numberStep;
         TextView setPushup, setShake;
         numberShake = (EditText)findViewById(R.id.numberShake);
         numberPush = (EditText)findViewById(R.id.numberPush);
+        numberStep = (EditText)findViewById(R.id.numberSteps);
         setPushup = (TextView)findViewById(R.id.SetPushUp);
         setShake = (TextView)findViewById(R.id.SetPhoneShake);
-
+        Time = (EditText)findViewById(R.id.timeinterval);
         back.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(SettingActivity.this, MainActivity.class);
@@ -41,6 +44,11 @@ public class SettingActivity extends AppCompatActivity {
                 handler.updateSetting(Shake,"SetShake");
                 int Push = Integer.parseInt(numberPush.getText().toString());
                 handler.updateSetting(Push,"SetPushup");
+                //user input time in min to milliseconds
+                int Timer = Integer.parseInt(Time.getText().toString()) * 60*1000;
+                handler.updateSetting(Timer,"SetTime");
+                int Step = Integer.parseInt(numberStep.getText().toString());
+                handler.updateSetting(Step,"SetStep");
                 Context context = getApplicationContext();
                 CharSequence text = "Setting Saved " + handler.getData("SetPushup");
                 int duration = Toast.LENGTH_SHORT;
