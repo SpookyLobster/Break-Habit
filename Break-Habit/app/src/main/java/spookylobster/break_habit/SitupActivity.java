@@ -15,8 +15,8 @@ import android.widget.Toast;
 
 public class SitupActivity extends AppCompatActivity implements SensorEventListener {
 
-    private static final String TAG = "MainActivity";
-    private TextView tv;
+
+    private TextView situp_tv;
     private SensorManager sensorManager;
     private Sensor accelerometer;
     private Sensor magnetometer;
@@ -30,38 +30,41 @@ public class SitupActivity extends AppCompatActivity implements SensorEventListe
 
         // Keep the screen on
         // https://developer.android.com/training/scheduling/wakelock.html#screen
+        // use the FLAG_KEEP_SCREEN_ON
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         // Grab the layout TextView
-        tv = (TextView) findViewById(R.id.tv_tilt);
+        situp_tv = (TextView) findViewById(R.id.tv_tilt);
 
         // Setup the sensors
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+
         if (accelerometer == null) {
-            Log.d(TAG, "accelerometer is null");
+            Toast.makeText(this, "accelerometer is null", Toast.LENGTH_SHORT).show();
         }
         magnetometer = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
+
         if (magnetometer == null) {
-            Log.d(TAG, "magnetometer is null");
+            Toast.makeText(this, "magnetometer is null", Toast.LENGTH_SHORT).show();
         }
 
         // Detect the window position
         switch (getWindowManager().getDefaultDisplay().getRotation()) {
             case Surface.ROTATION_0:
-                Log.d(TAG, "Rotation 0");
+                Toast.makeText(this, "Rotation 0", Toast.LENGTH_SHORT).show();
                 break;
             case Surface.ROTATION_90:
-                Log.d(TAG, "Rotation 90");
+                Toast.makeText(this, "Rotation 90", Toast.LENGTH_SHORT).show();
                 break;
             case Surface.ROTATION_180:
-                Log.d(TAG, "Rotation 180");
+                Toast.makeText(this, "Rotation 180", Toast.LENGTH_SHORT).show();
                 break;
             case Surface.ROTATION_270:
-                Log.d(TAG, "Rotation 270");
+                Toast.makeText(this, "Rotation 270", Toast.LENGTH_SHORT).show();
                 break;
             default:
-                Log.w(TAG, "Rotation unknown");
+                Toast.makeText(this, "Rotation unknown", Toast.LENGTH_SHORT).show();
                 break;
         }
     }
@@ -104,7 +107,7 @@ public class SitupActivity extends AppCompatActivity implements SensorEventListe
     public void onSensorChanged(SensorEvent event) {
         //Log.d(TAG, "onSensorChanged()");
         if (event.values == null) {
-            Log.w(TAG, "event.values is null");
+            Toast.makeText(this, "event.values is null", Toast.LENGTH_SHORT).show();
             return;
         }
         int sensorType = event.sensor.getType();
@@ -116,20 +119,20 @@ public class SitupActivity extends AppCompatActivity implements SensorEventListe
                 mGeomagnetic = event.values;
                 break;
             default:
-                Log.w(TAG, "Unknown sensor type " + sensorType);
+                Toast.makeText(this, "Unknown sensor type", Toast.LENGTH_SHORT).show();
                 return;
         }
         if (mGravity == null) {
-            Log.w(TAG, "mGravity is null");
+            Toast.makeText(this, "mGravity is null", Toast.LENGTH_SHORT).show();
             return;
         }
         if (mGeomagnetic == null) {
-            Log.w(TAG, "mGeomagnetic is null");
+            Toast.makeText(this, "mGeomagnetic is null", Toast.LENGTH_SHORT).show();
             return;
         }
         float R[] = new float[9];
         if (! SensorManager.getRotationMatrix(R, null, mGravity, mGeomagnetic)) {
-            Log.w(TAG, "getRotationMatrix() failed");
+            Toast.makeText(this, "getRotationMatrix() failed", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -140,7 +143,7 @@ public class SitupActivity extends AppCompatActivity implements SensorEventListe
         int rollDeg = (int) Math.round(Math.toDegrees(roll));
         int power = degreesToPower(rollDeg);
         //Log.d(TAG, "deg=" + rollDeg + " power=" + power);
-        tv.setText(String.valueOf(power));
+        situp_tv.setText(String.valueOf(power));
     }
 
     @Override
