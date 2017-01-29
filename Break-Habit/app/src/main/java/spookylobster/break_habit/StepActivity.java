@@ -19,6 +19,7 @@ public class StepActivity extends AppCompatActivity implements SensorEventListen
     private TextView stepcounterTV;
     private boolean exercising;
     private Integer steps = 10;
+    SQLhandler handler = new SQLhandler(this,null,1);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,7 @@ public class StepActivity extends AppCompatActivity implements SensorEventListen
         exercising = true;
         stepcounterTV = (TextView)findViewById(R.id.stepcount);
         sensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
+        steps = handler.getData("SetStep");
 
         Sensor countSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
         if (countSensor != null){
