@@ -14,12 +14,12 @@ import android.widget.Toast;
 import static android.R.id.input;
 
 public class SettingActivity extends AppCompatActivity {
+    private SQLhandler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
-        final SQLhandler handler;
         handler = new SQLhandler(this,null,1);
         final Button back= (Button) findViewById(R.id.backbutton);
         final Button save= (Button) findViewById(R.id.savebutton);
@@ -44,7 +44,7 @@ public class SettingActivity extends AppCompatActivity {
                 int Push = Integer.parseInt(numberPush.getText().toString());
                 handler.updateSetting(Push,"SetPush");
                 Context context = getApplicationContext();
-                CharSequence text = "Setting Saved " + Shake + " " + Push;
+                CharSequence text = "Setting Saved " + handler.getData("SetShake") + " " + handler.getData("SetPush");
                 int duration = Toast.LENGTH_SHORT;
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
