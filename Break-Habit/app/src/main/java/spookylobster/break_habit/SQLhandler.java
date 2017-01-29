@@ -33,7 +33,8 @@ public class SQLhandler extends SQLiteOpenHelper{
         //set default value for settings
         db.execSQL("insert into setting (method, number) values(\"SetShake\",25)");
         db.execSQL("insert into setting (method, number) values(\"SetPushup\",10)");
-        db.execSQL("insert into setting values('SetTime',5000)");
+        db.execSQL("insert into setting (method, number) values(\"SetTime\",5000)");
+        db.execSQL("insert into setting (method, number) values(\"SetStep\",50)");
     }
 
     @Override
