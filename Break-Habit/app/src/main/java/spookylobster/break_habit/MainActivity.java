@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button startbutton;
     private TextView timeView;
-    private String[] action = {"Shake", "Test"};
+    private String[] action = {"Shake", "Running"};
     private ListView actionList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 if (i == 0) {
                     startShakeActivity();
+                }
+                if (i==1) {
+                    StepActivity();
                 }
             }
         });
@@ -143,5 +146,9 @@ public class MainActivity extends AppCompatActivity {
     public void SettingActivity(){
         Intent intent = new Intent(this, SettingActivity.class);
         startActivity(intent);
+    }
+    public void StepActivity(){
+        Intent step_intent = new Intent(this,StepActivity.class );
+        startActivity(step_intent);
     }
 }
