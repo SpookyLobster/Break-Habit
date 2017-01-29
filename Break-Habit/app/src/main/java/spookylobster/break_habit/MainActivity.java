@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView timeView;
     private String[] action = {"Shake", "Running"};
     private ListView actionList;
+    private Ringtone r;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
             actionList.setVisibility(View.VISIBLE);
             try {
                 Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
-                Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
+                r = RingtoneManager.getRingtone(getApplicationContext(), notification);
                 r.play();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -141,14 +143,27 @@ public class MainActivity extends AppCompatActivity {
 
     public void startShakeActivity(){
         Intent intent = new Intent(this, ShakeActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, 0);
     }
     public void SettingActivity(){
         Intent intent = new Intent(this, SettingActivity.class);
         startActivity(intent);
     }
+
     public void StepActivity(){
         Intent step_intent = new Intent(this,StepActivity.class );
         startActivity(step_intent);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 0) {
+            System.out.print("Stopped");
+            r.stop();
+            actionList.setVisibility(View.INVISIBLE);
+        }
+
+
     }
 }

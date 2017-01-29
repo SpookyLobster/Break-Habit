@@ -1,5 +1,6 @@
 package spookylobster.break_habit;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.hardware.SensorEvent;
@@ -17,7 +18,7 @@ public class ShakeActivity extends AppCompatActivity implements SensorEventListe
     private SensorManager SensorManager;
     private Sensor Accelerometer;
     private float previousZ = 0;
-    private Integer shakeCounter = 50;
+    private Integer shakeCounter = 10;
     private TextView counter;
     private long lastUpdate = 0;
 
@@ -61,10 +62,11 @@ public class ShakeActivity extends AppCompatActivity implements SensorEventListe
 
     public void shake() {
         shakeCounter -= 1;
-        if (shakeCounter == 0){
+        if (shakeCounter <= 0){
             stopShakeActivity();
+        } else {
+            updateCounterText();
         }
-        updateCounterText();
     }
 
     public void updateCounterText() {
@@ -72,7 +74,8 @@ public class ShakeActivity extends AppCompatActivity implements SensorEventListe
     }
 
     public void stopShakeActivity(){
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        Intent returnIntent = new Intent();
+        setResult(Activity.RESULT_OK, returnIntent);
+        finish();
     }
 }
