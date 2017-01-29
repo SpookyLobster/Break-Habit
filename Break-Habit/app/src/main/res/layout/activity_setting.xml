@@ -53,14 +53,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:text="Time interval for alarms: "
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/numberShake"
-        android:layout_alignParentStart="true"
-        android:id="@+id/textView5" />
-
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
