@@ -2,8 +2,13 @@ package spookylobster.break_habit;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
+
+import java.security.KeyStore;
 import java.util.concurrent.TimeUnit;
 import android.content.Intent;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -34,7 +39,8 @@ public class MainActivity extends AppCompatActivity {
         startbutton = (Button)findViewById(R.id.startb);
         timeView = (TextView)findViewById(R.id.timeTV);
 
-        timeView.setText("00:03:00");
+
+        timeView.setText("00:00:00");
         final CounterClass timer = new CounterClass(100000, 1000);
         startbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,10 +83,16 @@ public class MainActivity extends AppCompatActivity {
             System.out.println(hms);
             timeView.setText(hms);
         }
-
         @Override
         public void onFinish(){
             timeView.setText("Time Up");
+            try {
+                Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+                Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
+                r.play();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
