@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textSize="40sp"
+        android:textSize="64sp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"/>
 
@@ -39,7 +39,7 @@
         android:id="@+id/actionList"
         android:layout_below="@+id/timeTV"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="26dp"
         android:layout_above="@+id/startb">
 
     </ListView>
