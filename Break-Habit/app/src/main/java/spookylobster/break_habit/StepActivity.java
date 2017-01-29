@@ -51,7 +51,7 @@ public class StepActivity extends AppCompatActivity implements SensorEventListen
         if (sensor.getType() == Sensor.TYPE_STEP_COUNTER) {
             stepcounterTV.setText("Step Counter Detected : " + value);
         }
-        }
+    }
 
 
     @Override

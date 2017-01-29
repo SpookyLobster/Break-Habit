@@ -33,9 +33,10 @@ public class MainActivity extends AppCompatActivity {
 
     private Button startbutton;
     private TextView timeView;
-    private String[] action = {"Shake", "Running", "Situp"};
+    private String[] action = {"Shake", "Running", "Situp", "Pushup"};
     private ListView actionList;
     private Ringtone r;
+    private SQLhandler handler = new SQLhandler(this,null,1);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +59,9 @@ public class MainActivity extends AppCompatActivity {
                 if (i==2){
                     SitupActivity();
                 }
+                if (i==3){
+                    PushupActivity();
+                }
             }
         });
 
@@ -65,7 +69,15 @@ public class MainActivity extends AppCompatActivity {
         actionList.setAdapter(actionAdapt);
 
         timeView.setText("00:00:00");
-        final CounterClass timer = new CounterClass(3000, 1000);
+        long time = handler.getData("SetTime");
+
+        String hms = String.format("%02d:%02d:%02d",
+                TimeUnit.MILLISECONDS.toHours(time),
+                TimeUnit.MILLISECONDS.toMinutes(time) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(time)),
+                TimeUnit.MILLISECONDS.toSeconds(time) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(time)));
+        System.out.println(hms);
+        timeView.setText(hms);
+        final CounterClass timer = new CounterClass(time, 1000);
 
         startbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
                 timer.start();
             }
         });
-
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -161,6 +172,11 @@ public class MainActivity extends AppCompatActivity {
     public void SitupActivity(){
         Intent situp_intent = new Intent(this, SitupActivity.class);
         startActivity(situp_intent);
+    }
+
+    public void PushupActivity() {
+        Intent situp_intent = new Intent(this, PushupActivity.class);
+        startActivityForResult(situp_intent, 0);
     }
 
     @Override

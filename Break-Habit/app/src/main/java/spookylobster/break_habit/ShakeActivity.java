@@ -50,7 +50,7 @@ public class ShakeActivity extends AppCompatActivity implements SensorEventListe
                 float speed = Math.abs(z - previousZ)/ (curTime - lastUpdate) * 10000;
                 lastUpdate = curTime;
 
-                if ( 500 < speed) {
+                if (2000 < speed) {
                     shake();
                 }
                 previousZ = z;

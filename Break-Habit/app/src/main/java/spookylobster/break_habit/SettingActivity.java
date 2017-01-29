@@ -11,8 +11,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import static android.R.id.input;
-
 public class SettingActivity extends AppCompatActivity {
     private SQLhandler handler;
 
