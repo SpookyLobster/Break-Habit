@@ -40,23 +40,35 @@ public class SettingActivity extends AppCompatActivity {
 
         save.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
                 int Shake = Integer.parseInt(numberShake.getText().toString());
-                handler.updateSetting(Shake,"SetShake");
                 int Push = Integer.parseInt(numberPush.getText().toString());
-                handler.updateSetting(Push,"SetPushup");
                 //user input time in min to milliseconds
-                int Timer = Integer.parseInt(Time.getText().toString()) * 60*1000;
-                handler.updateSetting(Timer,"SetTime");
+                int Timer = Integer.parseInt(Time.getText().toString()) * 60 * 1000;
                 int Step = Integer.parseInt(numberStep.getText().toString());
-                handler.updateSetting(Step,"SetStep");
-                Context context = getApplicationContext();
-                CharSequence text = "Setting Saved " + handler.getData("SetPushup");
-                int duration = Toast.LENGTH_SHORT;
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
-                Intent intent = new Intent(SettingActivity.this, MainActivity.class);
-                startActivity(intent);
+                if (numberShake.getText().toString().isEmpty() && numberPush.getText().toString().isEmpty() && Time.getText().toString().isEmpty() && numberStep.getText().toString().isEmpty()) {
+
+                    Context context = getApplicationContext();
+                    CharSequence text = "Please fill all field ";
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+
+
+                } else {
+                    handler.updateSetting(Shake, "SetShake");
+                    handler.updateSetting(Push, "SetPushup");
+                    handler.updateSetting(Timer, "SetTime");
+                    handler.updateSetting(Step, "SetStep");
+                    Context context = getApplicationContext();
+                    CharSequence text = "Setting Saved " + handler.getData("SetPushup");
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                    Intent intent = new Intent(SettingActivity.this, MainActivity.class);
+                    startActivity(intent);
                 }
+            }
         });
 
 
