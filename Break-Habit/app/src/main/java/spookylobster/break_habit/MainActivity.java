@@ -47,7 +47,9 @@ public class MainActivity extends AppCompatActivity {
         actionList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                
+                if (i == 0) {
+                    startShakeActivity();
+                }
             }
         });
 
@@ -103,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
             timeView.setText("Time Up");
             actionList.setVisibility(View.VISIBLE);
             try {
-                Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+                Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
                 Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
                 r.play();
             } catch (Exception e) {
