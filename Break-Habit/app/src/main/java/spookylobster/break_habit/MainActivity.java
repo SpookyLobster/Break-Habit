@@ -87,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
         startbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                v.setVisibility(View.INVISIBLE);
                 timer.start();
             }
         });
@@ -192,6 +193,7 @@ public class MainActivity extends AppCompatActivity {
         if(requestCode == 0) {
             System.out.print("Stopped");
             r.stop();
+            startbutton.setVisibility(View.VISIBLE);
             actionList.setVisibility(View.INVISIBLE);
         }
 
