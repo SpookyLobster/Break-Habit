@@ -2,6 +2,10 @@ package spookylobster.break_habit;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import android.content.Intent;
 import android.os.Build;
@@ -15,7 +19,11 @@ import android.text.format.Time;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 @TargetApi(Build.VERSION_CODES.GINGERBREAD)
@@ -25,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
 
     private Button startbutton;
     private TextView timeView;
-
+    private String[] action = {"Shake", "Test"};
+    private ListView actionList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,9 +42,20 @@ public class MainActivity extends AppCompatActivity {
 
         startbutton = (Button)findViewById(R.id.startb);
         timeView = (TextView)findViewById(R.id.timeTV);
+        actionList = (ListView)findViewById(R.id.actionList);
+
+        actionList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                
+            }
+        });
+
+        ListAdapter actionAdapt = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, action);
+        actionList.setAdapter(actionAdapt);
 
         timeView.setText("00:03:00");
-        final CounterClass timer = new CounterClass(100000, 1000);
+        final CounterClass timer = new CounterClass(3000, 1000);
         startbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,9 +101,9 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onFinish(){
             timeView.setText("Time Up");
+            actionList.setVisibility(View.VISIBLE);
         }
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

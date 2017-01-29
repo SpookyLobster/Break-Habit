@@ -20,7 +20,7 @@
         android:gravity="center"
         android:textSize="40sp"
         android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/startb" />
+        android:layout_alignParentEnd="true"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -31,4 +31,16 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:id="@+id/actionList"
+        android:layout_below="@+id/timeTV"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="23dp"
+        android:layout_above="@+id/startb">
+
+    </ListView>
 </RelativeLayout>
