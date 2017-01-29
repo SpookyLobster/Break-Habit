@@ -42,7 +42,7 @@ public class SettingActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                if (numberShake.getText().toString().isEmpty() && numberPush.getText().toString().isEmpty() && Time.getText().toString().isEmpty() && numberStep.getText().toString().isEmpty()) {
+                if (numberShake.getText().toString().isEmpty() || numberPush.getText().toString().isEmpty() || Time.getText().toString().isEmpty() || numberStep.getText().toString().isEmpty()) {
 
                     Context context = getApplicationContext();
                     CharSequence text = "Please fill all field ";
