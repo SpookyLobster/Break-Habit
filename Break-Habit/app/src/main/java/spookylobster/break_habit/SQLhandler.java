@@ -51,7 +51,7 @@ public class SQLhandler extends SQLiteOpenHelper{
     }
     public void updateSetting(int number, String method){
         //db.update("setting", contentValues, "_id="+id,null);
-        this.getWritableDatabase().execSQL("UPDATE SETTING SET number="+number+"where method='"+method+"'");
+        this.getWritableDatabase().execSQL("UPDATE SETTING SET number="+number+" where method=\""+method+"\"");
     }
 
     //Getting the userinput number
