@@ -59,9 +59,11 @@ public class MainActivity extends AppCompatActivity {
                 if (i==1) {
                     StepActivity();
                 }
+                /*
                 if (i==2){
                     SitupActivity();
                 }
+                */
                 if (i==3){
                     PushupActivity();
                 }
@@ -173,11 +175,12 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(step_intent, 0);
     }
 
+    /* sit up not working
     public void SitupActivity(){
         Intent situp_intent = new Intent(this, SitupActivity.class);
         startActivity(situp_intent);
     }
-
+*/
     public void PushupActivity() {
         Intent situp_intent = new Intent(this, PushupActivity.class);
         startActivityForResult(situp_intent, 0);
